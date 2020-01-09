@@ -1,0 +1,71 @@
+<!--<h1>StaticPage#home</h1>-->
+<!--<p>Find me in app/views/static_page/home.html.erb</p>-->
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "static_page" %>
+<% end %>
+
+<% provide(:title, "Home") %>
+<!DOCTYPE html>
+  <section>
+    <div id="banner">
+      <div class="container">
+        <div class="intr">
+          <h1 class="hoftc hohdr">Study App</h1>
+          <div class="hoftc hohds">Stuck on homeworks? Need study buddies? Don't know how to prepare for exams? It's all in one place!</div>
+        </div>
+        <div class="srchbrhd">
+          <!--<form class="form-inline my-2 my-lg-0">-->
+          <!--  <input id="srchbar" class="form-control mr-sm-2" type="search" placeholder="Search Subjects" aria-label="Search">-->
+          <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+          <!--</form>-->
+          <%= form_tag('/', method: :get, :class=>"form-inline my-2 my-lg-0") do %>
+            <%= text_field_tag(:search, params[:search], :id=>"srchbar", :class=>"form-control mr-sm-2", :type=>"search", :placeholder=>"Search Subjects") %>
+            <%= submit_tag("Search", :class=>"btn btn-outline-success my-2 my-sm-0", :type=>"submit") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div class="container">
+    <div id="questions">
+      <% @questions.each do |question| %>
+        <div class="qsumry">
+          <div class="stsct">
+            <div class="stats">
+              <div class="vote">
+                <span class="vtcnt"><strong><%= question.get_likes.size %></strong></span>
+                <div>votes</div>
+              </div>
+              <div class="status">
+                <strong><%= question.answers.count %></strong>
+                <div>answers</div>
+              </div>
+            </div>
+          </div>
+          <div class="sumry">
+            <h3>
+              <%= link_to question.title, question, class: "qlnk" %>
+            </h3>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <%= will_paginate @questions %>
+  
+<% if @session_loggedin %>
+  <div id="nqct">
+    <a id="adqlnk" href="/questions/new">
+      <span id="adqic">
+        <%= image_tag("icons/icon-idea.png", :alt => "Add Question Icon") %>
+      </span>
+      <span id="adqlb">New Question!</span>
+    </a>
+  </div>
+<% else %>
+  <dev>Login to add question. </dev>
+<% end %>
+  

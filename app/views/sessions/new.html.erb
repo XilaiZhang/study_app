@@ -1,0 +1,28 @@
+<% provide(:title, "Log in") %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "user_forms" %>
+<% end %>
+
+<section id="mainfrm">
+  <div class="container">
+    <div class="frmhddr">
+      <h1>Log in</h1>
+    </div>
+    <div class="usrfc">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <div class="fldwrp">
+          <%= f.label :username %>
+          <%= f.email_field :username, class: 'form-control' %>
+        </div>
+        <div class="fldwrp">
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
+        <div class="btnwrp">
+          <%= f.submit "Log in", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <p>New User? <%= link_to "Sign up now!", '/users/new' %></p>
+    </div>
+  </div>
+</section>

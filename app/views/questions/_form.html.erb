@@ -1,0 +1,45 @@
+<%= form_with(model: question, local: true) do |form| %>
+  <% if question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+        <% question.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <!--Question description-->
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+
+  <!--Category dropdown selection-->
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.collection_select :category_id, Category.all, :id, :name, prompt: "Please select a category" %>
+  </div>
+
+
+  <!--Add Category button-->
+
+  <div id="nqct">
+    <a id="adqlnk" href="/categories/new">
+      <span id="adqic">
+        <%= image_tag("icons/icon-idea.png", :alt => "Add Category Icon") %>
+      </span>
+      <span id="adqlb">Add Category!</span>
+    </a>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

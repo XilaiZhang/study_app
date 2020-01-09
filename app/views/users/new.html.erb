@@ -1,0 +1,32 @@
+<% provide(:title, 'Sign up') %>
+<% content_for :head do %>
+  <%= stylesheet_link_tag "user_forms" %>
+<% end %>
+
+<section id="mainfrm">
+  <div class="container">
+    <div class="frmhddr">
+      <h1>Create Your Study App Account</h1>
+    </div>
+    <div class="usrfc">
+      <%= form_for(@user) do |f| %>
+        <div class="fldwrp">
+          <%= f.label :username %>
+          <%= f.text_field :username %>
+        </div>
+        <div class="fldwrp">
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
+        <div class="fldwrp">
+          <%= f.label :password_confirmation, "Confirmation" %>
+          <%= f.password_field :password_confirmation %>
+        </div>
+        <div class="btnwrp">
+          <%= f.submit "Create my account", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <p>Click <%= link_to "Here", "/" %> to go back!</p>
+    </div>
+  </div>
+</section>
