@@ -1,5 +1,6 @@
 # README
-Xilai Zhang: @XilaiZhang (xilaizhang@g.ucla.edu)
-Aashita Patwari : @AashitaP (harshupatwari@gmail.com)
-Feilan Wang: @icecubewang (wangfeilan@g.ucla.edu)
-Langhao Zhong: @LanghaoZ (zhong74.langhao@hotmail.com)
+
+A ruby on rails study app that allows users to signup, login, and search for information. Users can create and
+delete questions, categories and answers. Performed load testing analysis using Tsung on the following areas: 
+client and server side caching, multithreading, memory caching, horizontal and vertical scaling. 
+The app is developed on Amazon AWS, deployed on Amazon elastic beanstalk, and load tested on Amazon cloudformation.
